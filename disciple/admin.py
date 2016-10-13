@@ -1,3 +1,4 @@
 from django.contrib import admin
+from disciple.models import Disk
 
-# Register your models here.
+admin.site.register(Disk)
