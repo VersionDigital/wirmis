@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from boola.models import Client, Content, Booking
+
+
+class BookingAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Client)
+admin.site.register(Content)
+admin.site.register(Booking, BookingAdmin)
+
