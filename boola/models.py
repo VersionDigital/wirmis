@@ -13,6 +13,7 @@ class Client(models.Model):
 
 class Content(models.Model):
     title = models.CharField(max_length=1023)
+    synopsis = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return u"{}".format(self.title)
