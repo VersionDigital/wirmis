@@ -10,5 +10,9 @@ class DiskAdmin(admin.ModelAdmin):
     list_filter = ('content__title', 'in_transit',)
 
 
+class DispatchAdmin(admin.ModelAdmin):
+    search_fields = ('disk__content__title', 'client__name', 'disk__name')
+
+
 admin.site.register(Disk, DiskAdmin)
-admin.site.register(Dispatch)
+admin.site.register(Dispatch, DispatchAdmin)
