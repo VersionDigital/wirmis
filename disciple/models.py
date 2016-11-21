@@ -1,7 +1,9 @@
+# _*_ coding: utf-8 _*_
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from boola.models import Content, Client
+
 
 class Disk(models.Model):
 
@@ -14,8 +16,16 @@ class Disk(models.Model):
     content = models.ForeignKey(Content, null=True)
     capacity = models.PositiveIntegerField(null=True, blank=True)
 
+    def sent_to(self):
+        if self.in_transit:
+            dispatch = Dispatch.objects.filter(disk=self.id).first()
+            if dispatch:
+                return dispatch.client.name
+        return ""
+
     def __str__(self):
         return "{}".format(self.name)
+
 
 class Dispatch(models.Model):
     date = models.DateField()

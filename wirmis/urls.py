@@ -17,8 +17,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from boola.views import BookingListView
+from disciple.views import DiskListView, DiskCreate
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^bookings/$', BookingListView.as_view()),
+    url(r'^disks/$', DiskListView.as_view()),
+    url(r'^cdisks/$', DiskCreate.as_view()),
 ]
