@@ -20,8 +20,7 @@ class Disk(models.Model):
         if self.in_transit:
             dispatch = Dispatch.objects.filter(disk=self.id).first()
             if dispatch:
-                #return dispatch.client.name
-                return ""
+                return dispatch.booking.client.name
         return ""
 
     def __str__(self):
@@ -32,7 +31,9 @@ class Dispatch(models.Model):
     date = models.DateField()
     disk = models.ForeignKey(Disk)
     booking = models.ForeignKey(Booking)
-    # client = models.ForeignKey(Client)
 
     def __str__(self):
-        return "{} - {} - {}".format(self.date, self.disk.name, self.client.name)
+        return "{} - {} - {}".format(self.date,
+                                     self.disk.name,
+                                     self.booking.client.name
+                                     )
