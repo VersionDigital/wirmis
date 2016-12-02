@@ -21,7 +21,8 @@ class DiskCreate(CreateView):
     model = Disk
     template_name = "create_disk.html"
 
-    fields = ['name', 'content', 'capacity', ]
+    #fields = ['name', 'content', 'capacity', ]
+    fields = ['name', 'capacity', ]
 
 class DispatchListView(ListView):
 

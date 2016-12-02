@@ -13,7 +13,6 @@ class Disk(models.Model):
 
     name = models.CharField(max_length=8)
     in_transit = models.BooleanField(_(u"out of office?"), default=False)
-    content = models.ForeignKey(Content, null=True)
     capacity = models.PositiveIntegerField(null=True, blank=True)
 
     def sent_to(self):

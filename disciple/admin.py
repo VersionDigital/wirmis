@@ -5,14 +5,18 @@ from django.contrib import admin
 from disciple.models import Disk, Dispatch
 
 class DiskAdmin(admin.ModelAdmin):
-    list_display = ('name', 'content', 'in_transit',)
-    search_fields = ('content__title',)
-    list_filter = ('content__title', 'in_transit',)
+    #list_display = ('name', 'content', 'in_transit',)
+    list_display = ('name', 'in_transit',)
+    #search_fields = ('content__title',)
+    #list_filter = ('content__title', 'in_transit',)
+    list_filter = ('in_transit',)
 
 
 class DispatchAdmin(admin.ModelAdmin):
-    search_fields = ('disk__content__title', 'client__name', 'disk__name')
+    #search_fields = ('disk__content__title', 'client__name', 'disk__name')
+    search_fields = ('client__name', 'disk__name')
 
 
 admin.site.register(Disk, DiskAdmin)
 admin.site.register(Dispatch, DispatchAdmin)
+
