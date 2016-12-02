@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 #from boola.models import Content, Client
-from boola.models import Content, Booking
+from boola.models import Booking
 
 
 class Disk(models.Model):
@@ -14,7 +14,6 @@ class Disk(models.Model):
 
     name = models.CharField(max_length=8)
     in_transit = models.BooleanField(_(u"out of office?"), default=False)
-    #content = models.ForeignKey(Content, null=True)
     capacity = models.PositiveIntegerField(null=True, blank=True)
 
     def sent_to(self):
@@ -32,6 +31,7 @@ class Disk(models.Model):
 class Dispatch(models.Model):
     date = models.DateField()
     disk = models.ForeignKey(Disk)
+    booking = models.ForeignKey(Booking)
     # client = models.ForeignKey(Client)
 
     def __str__(self):
