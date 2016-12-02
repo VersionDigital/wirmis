@@ -14,7 +14,8 @@ class DiskAdmin(admin.ModelAdmin):
 
 class DispatchAdmin(admin.ModelAdmin):
     #search_fields = ('disk__content__title', 'client__name', 'disk__name')
-    search_fields = ('client__name', 'disk__name')
+    #search_fields = ('client__name', 'disk__name')
+    search_fields = ('disk__name',)
 
 
 admin.site.register(Disk, DiskAdmin)
